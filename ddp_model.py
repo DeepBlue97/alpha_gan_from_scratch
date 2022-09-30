@@ -10,11 +10,15 @@ class VanillaModel(nn.Module):
 
         self.layer_1 = nn.Linear(3, 8)
         self.layer_2 = nn.Linear(8, 2)
+        self.sigmoid = nn.Sigmoid()
+        self.softmax = nn.Softmax(dim=1)
 
 
     def forward(self, x):
         
-        x1 = self.layer_1(x)
-        out = self.layer_1(x1)
-
+        x = self.layer_1(x)
+        x = self.layer_2(x)
+        x = self.sigmoid(x)
+        out = self.softmax(x)
+        
         return out
