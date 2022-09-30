@@ -8,7 +8,7 @@ class DemoDataset(Dataset):
         self.x = np.random.randn(15).reshape((5,3))
         self.x = self.x.astype(np.float32)
         self.y = np.random.randint(0, 2, 5)
-        # self.y = self.y.astype(np.int32)
+        self.y = self.y.astype(np.int64)
         self.y = torch.from_numpy(self.y)
         # print()
     

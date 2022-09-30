@@ -22,18 +22,16 @@ loss_func = nn.CrossEntropyLoss()
 model.train()
 
 for epoch in range(10):
-    for x_batch, y_batch_gt in train_loader:
+    for x_batch, y_batch_gt in tqdm(train_loader):
 
-        with tqdm(total=(len(demoDataset)//2+1)*10, desc=f'Epoch {epoch}/{10}', unit='img') as pbar:
+        # with tqdm(total=(len(demoDataset)//2+1)*10, desc=f'Epoch {epoch}/{10}', unit='img') as pbar:
 
-            y_batch = model(x_batch)
+        y_batch = model(x_batch)
 
-            loss = loss_func(y_batch, y_batch_gt)
-            # print(loss)
+        loss = loss_func(y_batch, y_batch_gt)
+        # print(loss)
 
-            loss.backward()
-            optimizer.step()
+        loss.backward()
+        optimizer.step()
         # print(f'epoch: {epoch} done!')
-
-
 
