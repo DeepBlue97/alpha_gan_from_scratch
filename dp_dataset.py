@@ -5,9 +5,10 @@ import torch
 
 class DemoDataset(Dataset):
     def __init__(self):
-        self.x = np.random.randn(15).reshape((5,3))
+        sample_num = 100 * 3
+        self.x = np.random.randn(sample_num).reshape((-1,3))
         self.x = self.x.astype(np.float32)
-        self.y = np.random.randint(0, 2, 5)
+        self.y = np.random.randint(0, 2, sample_num)
         self.y = self.y.astype(np.int64)
         self.y = torch.from_numpy(self.y)
         # print()
