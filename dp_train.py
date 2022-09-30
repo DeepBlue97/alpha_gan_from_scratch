@@ -6,8 +6,8 @@ import torch.nn as nn
 import torch
 from tqdm import tqdm
 
-from ddp_dataset import DemoDataset
-from ddp_model import VanillaModel
+from dp_dataset import DemoDataset
+from dp_model import VanillaModel
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"  # 在环境中设置可见device，有空格没事哈哈哈
@@ -32,7 +32,7 @@ loss_func = nn.CrossEntropyLoss()
 
 model.train()  # 模型置为训练模式
 
-num_epochs = 10
+num_epochs = 100
 
 for epoch in range(num_epochs):
     loop = tqdm((train_loader), total = len(train_loader))
