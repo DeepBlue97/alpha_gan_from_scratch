@@ -12,5 +12,5 @@ python dp_train.py
 ```bash
 # 检查端口是否被占用：netstat -ntlp | grep 1234
 python -m torch.distributed.launch --nproc_per_node 2 --master_port 1234 ddp_train.py
-
+python -m torch.distributed.launch --nproc_per_node 2 --master_port 29500 ddp_train.py
 ```
