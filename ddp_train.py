@@ -14,6 +14,8 @@ from dp_model import VanillaModel
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = '0,1'  # 在环境中设置可见device，有空格没事哈哈哈
+os.environ['MASTER_ADDR'] = 'localhost'
+os.environ['MASTER_PORT'] = '1234'
 
 device_ids = [0, 1]
 local_rank = 0  # torch中的gpu序号
