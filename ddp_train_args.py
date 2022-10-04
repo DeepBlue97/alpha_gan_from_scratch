@@ -22,14 +22,15 @@ parser = argparse.ArgumentParser(description="MNIST TRAINING")
 parser.add_argument('--device_ids', type=str, default='0', help="Training Devices")
 parser.add_argument('--epochs', type=int, default=10, help="Training Epoch")
 parser.add_argument('--log_interval', type=int, default=100, help="Log Interval")
-parser.add_argument('--local_rank', type=int, default=-1, help="DDP parameter, do not modify")
+parser.add_argument('--local_rank', type=int, default=-1, help="DDP parameter, do not modify")  # 这个参数可不填但必需有，torch会自动为不同进程设置不同rank
 
 args = parser.parse_args()
 
 device_ids = list(map(int, args.device_ids.split(',')))
-dist.init_process_group(backend='nccl')
+# dist.init_process_group(backend='nccl')
 # device_ids = [0, 1]
 # local_rank = -1  # torch中的gpu序号
+# args.local_rank = 0
 
 dist.init_process_group(  # DDP 需要
     "nccl", 
